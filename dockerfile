@@ -1,14 +1,13 @@
 # Application base image 
-FROM httpd 
+FROM httpd:latest 
 # Create a base directory "app"
-RUN mkdir -p /var/app
-
-WORKDIR /var/app
+COPY ./ /usr/local/apache2/htdocs/
+#WORKDIR /var/app
 #copy site into place
-ADD . /var/app
+#ADD . /var/app
 
 EXPOSE 80
 # Give bash file permission 
-RUN chmod +x /var/app/dockerContent/usersetup.sh
+#RUN chmod +x /usr/local/apache2/htdocs/usersetup.sh
 #start  app
-CMD ["bash", "/var/app/dockerContent/usersetup.sh"] 
+#CMD ["bash", "/usr/local/apache2/htdocs/usersetup.sh"] 
